@@ -59,7 +59,7 @@ function initTheme() {
   
   updateThemeToggleIcons();
 
-  const toggleButtons = document.querySelectorAll('.theme-toggle-btn, .drawer-theme-toggle');
+  const toggleButtons = document.querySelectorAll('.theme-toggle-btn, .drawer-theme-toggle, #fixed-theme-toggle');
   toggleButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -74,12 +74,12 @@ function initTheme() {
 function updateThemeToggleIcons() {
   const isDark = document.documentElement.classList.contains('dark');
   
-  // Update desktop icon buttons
-  const desktopButtons = document.querySelectorAll('.header-actions .theme-toggle-btn');
-  desktopButtons.forEach(btn => {
+  // Update header and fixed floating icon buttons
+  const iconButtons = document.querySelectorAll('.theme-toggle-btn:not(.drawer-utility-btn), #fixed-theme-toggle');
+  iconButtons.forEach(btn => {
     btn.innerHTML = isDark 
       ? `<svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>`
-      : `<svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>`;
+      : `<svg class="w-5 h-5 text-slate-700 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>`;
     btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   });
 
@@ -159,16 +159,60 @@ function initHeader() {
     }
   }, { passive: true });
 
-  // Active link detection
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  const navLinks = document.querySelectorAll('.nav-link, .drawer-link, .dropdown-item-link, .drawer-sublink');
+  // Active link detection for Desktop and Mobile Navigation
+  let currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  if (currentPath === '' || currentPath.endsWith('/') || currentPath.includes('Tie-Dye Art Studio')) {
+    // If running in local directory without filename or root
+    if (window.location.pathname.includes('home-2.html')) {
+      currentPath = 'home-2.html';
+    } else {
+      currentPath = 'index.html';
+    }
+  }
+
+  const isHome1 = (currentPath === 'index.html');
+  const isHome2 = (currentPath === 'home-2.html');
+  const isHome = isHome1 || isHome2;
+
+  // 1. Highlight Top-Level Home Dropdown Triggers (Desktop & Mobile)
+  const desktopHomeTrigger = document.querySelector('.nav-dropdown-trigger');
+  const mobileHomeToggle = document.querySelector('.drawer-dropdown-toggle');
   
-  navLinks.forEach(link => {
+  if (isHome) {
+    if (desktopHomeTrigger) desktopHomeTrigger.classList.add('active');
+    if (mobileHomeToggle) mobileHomeToggle.classList.add('active');
+  } else {
+    if (desktopHomeTrigger) desktopHomeTrigger.classList.remove('active');
+    if (mobileHomeToggle) mobileHomeToggle.classList.remove('active');
+  }
+
+  // 2. Highlight Specific Home Sublinks & Dropdown Items
+  document.querySelectorAll('a[href="index.html"].dropdown-item-link, a[href="index.html"].drawer-sublink').forEach(el => {
+    if (isHome1) {
+      el.classList.add('active');
+    } else {
+      el.classList.remove('active');
+    }
+  });
+
+  document.querySelectorAll('a[href="home-2.html"].dropdown-item-link, a[href="home-2.html"].drawer-sublink').forEach(el => {
+    if (isHome2) {
+      el.classList.add('active');
+    } else {
+      el.classList.remove('active');
+    }
+  });
+
+  // 3. Highlight Other Pages (Gallery, Products, Workshops, Custom Orders, Contact)
+  const otherNavLinks = document.querySelectorAll('.nav-link:not(.nav-dropdown-trigger), .drawer-link:not(.drawer-dropdown-toggle)');
+  otherNavLinks.forEach(link => {
     const href = link.getAttribute('href');
-    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
-      link.classList.add('active');
-    } else if (href && href !== '#' && !href.startsWith('#')) {
-      link.classList.remove('active');
+    if (href && href !== '#' && !href.startsWith('#')) {
+      if (href === currentPath) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
     }
   });
 }
@@ -246,6 +290,9 @@ function openMobileMenu() {
   const drawer = document.getElementById('mobile-drawer');
   const openBtn = document.querySelector('.mobile-menu-toggle');
   if (!drawer) return;
+
+  // Home dropdown starts closed when opening mobile menu unless explicitly tapped (Requirement 6)
+  closeMobileHomeSubmenu();
 
   mobileMenuOpen = true;
   drawer.classList.add('open');
@@ -360,11 +407,17 @@ function initMobileDrawer() {
     });
   }
 
-  // Close drawer on any navigation link click (Home 1, Home 2, Products, Workshops, Custom Orders, Contact, CTA, Brand)
+  // Close drawer immediately on any navigation link click (Home 1, Home 2, Products, Workshops, Custom Orders, Contact, CTA, Brand)
   document.querySelectorAll('.drawer-link:not(.drawer-dropdown-toggle), .drawer-sublink, .drawer-cta-wrap a, .drawer-brand-wrap').forEach(link => {
     link.addEventListener('click', () => {
       closeMobileMenu();
     });
+  });
+
+  // Ensure drawer is cleanly closed on page load and bfcache restore
+  closeMobileMenu();
+  window.addEventListener('pageshow', () => {
+    closeMobileMenu();
   });
 
   // Global Escape key handler
