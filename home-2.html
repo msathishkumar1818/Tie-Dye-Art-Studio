@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Atelier | Home 2 — Botanical Dye Lab, Live Swatch Spectrum & Studio Residency</title>
+  <meta name="description" content="Enter Aura Atelier Dye Lab: Explore our live botanical color spectrum, artisan manifesto, fermentation vat log, and masterclass sessions.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            indigo: { DEFAULT: '#243B6B', 50: '#F0F4FA', 600: '#1B2E54', 900: '#0E1A30' },
+            teal: { DEFAULT: '#176B6B', 50: '#EEF8F8', 700: '#0E4444' },
+            turmeric: { DEFAULT: '#E9A820', 50: '#FDF7EB', 400: '#F5BE4E', 600: '#C78C12' },
+            terracotta: { DEFAULT: '#C85A3E', 50: '#FAF0ED', 600: '#A74229' },
+            coral: { DEFAULT: '#D95D52', 50: '#FDF2F1', 600: '#B83E34' },
+            cream: '#F7F0E3',
+            sand: '#E9DDC8',
+            charcoal: '#1F2523'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Favicon / Brand Title Icon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23243B6B' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01'/%3E%3C/svg%3E">
+
+  <!-- Custom Master Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-primary text-primary transition-colors duration-300">
+
+  <!-- =========================================================================
+       0. PAGE LOADER (Brand Spinner)
+       ========================================================================= -->
+  <div id="page-loader" aria-hidden="true">
+    <div class="loader-brand-ring"></div>
+    <div class="loader-brand-text">AURA ATELIER</div>
+  </div>
+
+  <!-- =========================================================================
+       0. FLOATING BACK TO TOP BUTTON (UP ARROW)
+       ========================================================================= -->
+  <button id="back-to-top" aria-label="Scroll back to top">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+  </button>
+
+  <!-- =========================================================================
+       DESKTOP & MOBILE HEADER (Single-Line Desktop Layout + Home Dropdown & RTL)
+       ========================================================================= -->
+  <!-- =========================================================================
+       DESKTOP & MOBILE HEADER (Strict Mobile Header & High-Touch Drawer)
+       ========================================================================= -->
+  <header id="main-header">
+    <div class="header-container">
+      <!-- Brand Identity (Left-aligned, compact two-line lockup) -->
+      <a href="index.html" class="brand-logo" aria-label="Aura Atelier Batik &amp; Textile Studio">
+        <div class="logo-icon-wrap">
+          <svg class="logo-icon-svg text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+          </svg>
+        </div>
+        <div class="brand-text-wrap">
+          <span class="brand-text">AURA ATELIER</span>
+          <span class="brand-subtext">BATIK &amp; TEXTILE STUDIO</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Bar with Home Dropdown (Visible on Desktop >= 1024px) -->
+      <nav aria-label="Main Navigation">
+        <ul class="desktop-nav">
+          <!-- Home Dropdown -->
+          <li class="nav-dropdown-wrapper">
+            <a href="home-2.html" class="nav-link nav-dropdown-trigger active" aria-haspopup="true" aria-expanded="false">
+              <span>Home</span>
+              <svg class="w-3.5 h-3.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+            </a>
+            <ul class="nav-dropdown-menu">
+              <li>
+                <a href="index.html" class="dropdown-item-link">
+                  <span>Home 1 (Artisan Flow)</span>
+                  <span class="dropdown-badge tag-terracotta">Classic</span>
+                </a>
+              </li>
+              <li>
+                <a href="home-2.html" class="dropdown-item-link active">
+                  <span>Home 2 (Dye Lab)</span>
+                  <span class="dropdown-badge tag-indigo">Immersive</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="gallery.html" class="nav-link">Gallery / Lookbook</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+          <li><a href="workshops.html" class="nav-link">Workshops & Classes</a></li>
+          <li><a href="custom-orders.html" class="nav-link">Custom Orders</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions: Desktop Utilities (RTL, Dark Mode, CTA) + Mobile Hamburger Button -->
+      <div class="header-actions">
+        <!-- RTL Button (Desktop Only) -->
+        <button class="action-icon-btn rtl-toggle-btn desktop-only" aria-label="Switch text direction">
+          <span class="font-bold">RTL</span>
+        </button>
+
+        <!-- Dark Mode Button (Desktop Only) -->
+        <button class="theme-toggle-btn desktop-only" aria-label="Toggle dark/light mode">
+          <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+
+        <!-- CTA Button (Desktop Only) -->
+        <a href="workshops.html" class="btn btn-terracotta btn-sm desktop-only" data-open-modal="workshop-modal">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          Book a Workshop
+        </a>
+
+        <!-- Mobile Hamburger Button (Strictly Visible on < 1024px, 44x44px Touch Target) -->
+        <button class="mobile-menu-toggle" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MOBILE MENU DRAWER (Full Navigation + Dedicated Dark Mode & RTL Controls)
+       ========================================================================= -->
+  <div id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="drawer-backdrop"></div>
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <a href="index.html" class="drawer-brand-wrap" aria-label="Aura Atelier Batik &amp; Textile Studio">
+          <div class="logo-icon-wrap">
+            <svg class="logo-icon-svg text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+            </svg>
+          </div>
+          <div class="brand-text-wrap">
+            <span class="brand-text">AURA ATELIER</span>
+            <span class="brand-subtext">BATIK &amp; TEXTILE STUDIO</span>
+          </div>
+        </a>
+        <button class="drawer-close-btn" aria-label="Close mobile menu">&times;</button>
+      </div>
+
+      <!-- Navigation Links -->
+      <ul class="drawer-links">
+        <!-- Expandable Home Accordion Item -->
+        <li>
+          <a href="#" class="drawer-link drawer-dropdown-toggle" aria-label="Toggle Home Pages">
+            <span>Home</span>
+            <svg class="w-4 h-4 dropdown-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+          </a>
+          <div class="drawer-submenu">
+            <a href="index.html" class="drawer-sublink">Home 1 (Artisan Flow)</a>
+            <a href="home-2.html" class="drawer-sublink active">Home 2 (Dye Lab)</a>
+          </div>
+        </li>
+        <li><a href="gallery.html" class="drawer-link">Gallery / Lookbook</a></li>
+        <li><a href="products.html" class="drawer-link">Products & Collections</a></li>
+        <li><a href="workshops.html" class="drawer-link">Workshops & Masterclasses</a></li>
+        <li><a href="custom-orders.html" class="drawer-link">Custom Orders & Commissions</a></li>
+        <li><a href="contact.html" class="drawer-link">Contact & Studio Visit</a></li>
+      </ul>
+
+      <!-- Dedicated Mobile Drawer Controls: Dark Mode & RTL Switches -->
+      <div class="drawer-utility-section">
+        <!-- Dark Mode Row Button -->
+        <button type="button" class="drawer-utility-btn drawer-theme-toggle theme-toggle-btn" aria-label="Toggle dark and light mode">
+          <div class="drawer-utility-left">
+            <div class="drawer-utility-icon theme-drawer-icon">
+              <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            </div>
+            <div class="drawer-utility-text">
+              <span class="drawer-utility-title">Theme Mode</span>
+              <span class="drawer-utility-status theme-mode-label">Sunlit Light Mode</span>
+            </div>
+          </div>
+          <div class="drawer-switch-track" aria-hidden="true">
+            <div class="drawer-switch-knob"></div>
+          </div>
+        </button>
+
+        <!-- RTL Row Button -->
+        <button type="button" class="drawer-utility-btn drawer-rtl-toggle rtl-toggle-btn" aria-label="Toggle text reading direction">
+          <div class="drawer-utility-left">
+            <div class="drawer-utility-icon rtl-drawer-icon">
+              <svg class="w-5 h-5 text-indigo-600 dark:text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+              </svg>
+            </div>
+            <div class="drawer-utility-text">
+              <span class="drawer-utility-title">Reading Direction</span>
+              <span class="drawer-utility-status rtl-mode-label">Left to Right (LTR)</span>
+            </div>
+          </div>
+          <div class="drawer-badge-pill rtl-badge-text font-bold">RTL</div>
+        </button>
+      </div>
+
+      <!-- Drawer Primary CTA -->
+      <div class="drawer-cta-wrap">
+        <a href="workshops.html" class="btn btn-terracotta w-full justify-center text-center font-bold" data-open-modal="workshop-modal">
+          Book a Workshop
+        </a>
+        <p class="text-[11px] text-muted text-center mt-2.5">124 Artisan Alley, Textile Quarter</p>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- =======================================================================
+         SECTION 01 — IMMERSIVE DARK DYE-LAB HERO (Full-Width Atmospheric Centered Layout)
+         ======================================================================= -->
+    <section id="hero-home2" class="relative overflow-hidden py-24 md:py-36 bg-indigo-900 text-white border-b border-subtle">
+      <div class="bg-anim-hero-ambient" aria-hidden="true">
+        <div class="bg-anim-hero-orb1"></div>
+        <div class="bg-anim-hero-orb2"></div>
+        <div class="bg-anim-hero-orb3"></div>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-6 text-center relative z-10 scroll-reveal-up">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-turmeric-light font-bold text-xs uppercase tracking-widest mb-6 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-turmeric animate-ping"></span>
+          Aura Atelier &bull; Botanical Dye Research & Living Textile Lab
+        </div>
+        
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold mb-6 text-white leading-tight">
+          Where Water, Wax & <br><span class="italic text-turmeric underline decoration-coral/60 underline-offset-8">Wild Plants Collide</span>.
+        </h1>
+        
+        <p class="text-slate-200 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+          We extract raw color from mountain roots, dried blossoms, and fermented indigo leaves to create limited-edition wearable art and museum tapestries.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-14">
+          <a href="workshops.html" class="btn btn-turmeric btn-lg shadow-glow" data-open-modal="workshop-modal">
+            Explore Live Workshop Dates
+          </a>
+          <a href="#swatch-spectrum" class="btn btn-outline-white btn-lg">
+            View Live Swatch Spectrum &darr;
+          </a>
+        </div>
+
+        <!-- Floating Quick Metric Strip -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 max-w-3xl mx-auto text-left">
+          <div class="p-3">
+            <div class="text-xs text-turmeric uppercase font-bold tracking-wider">Living Vat 01</div>
+            <div class="font-serif font-bold text-lg text-white">Sukumo Indigo (42°C)</div>
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-coral uppercase font-bold tracking-wider">Living Vat 02</div>
+            <div class="font-serif font-bold text-lg text-white">Madder Root Coral</div>
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-turmeric uppercase font-bold tracking-wider">Living Vat 03</div>
+            <div class="font-serif font-bold text-lg text-white">Wild Temple Marigold</div>
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-teal uppercase font-bold tracking-wider">Living Vat 04</div>
+            <div class="font-serif font-bold text-lg text-white">Iron Oak Gall Shifting</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 02 — BOTANICAL SWATCH SPECTRUM (Full-Width Interactive Color Band)
+         ======================================================================= -->
+    <section id="swatch-spectrum" class="py-16 md:py-24 bg-secondary border-b border-subtle relative overflow-hidden">
+      <div class="bg-anim-orbital-geo" aria-hidden="true">
+        <div class="bg-anim-orbital-circle1"></div>
+        <div class="bg-anim-orbital-circle2"></div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div class="text-center max-w-2xl mx-auto mb-12 scroll-reveal-up">
+          <span class="section-kicker justify-center">Living Chemistry</span>
+          <h2 class="section-title">The Natural Botanical Spectrum</h2>
+          <p class="text-secondary">Every pigment in our studio is brewed from single-origin botanical botanicals without synthetic petrochemical salts.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-parent items-stretch">
+          <div class="p-5 rounded-2xl bg-card border border-subtle tilt-card-3d stagger-item scroll-reveal-up border-t-4 border-indigo flex flex-col justify-between h-full">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-[#243B6B] shadow-md mb-3"></div>
+              <h3 class="font-serif font-bold text-lg text-primary mb-1">Sukumo Indigo 60°</h3>
+              <div class="text-xs text-terracotta font-bold mb-2">Indigofera Tinctoria Leaves</div>
+              <p class="text-xs text-secondary leading-relaxed">Fermented in alkaline cedar barrels with dates and lime. Produces ethereal cyan mists up to deep midnight navy.</p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-card border border-subtle tilt-card-3d stagger-item scroll-reveal-up border-t-4 border-terracotta flex flex-col justify-between h-full">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-[#C85A3E] shadow-md mb-3"></div>
+              <h3 class="font-serif font-bold text-lg text-primary mb-1">Five-Year Madder</h3>
+              <div class="text-xs text-terracotta font-bold mb-2">Rubia Cordifolia Roots</div>
+              <p class="text-xs text-secondary leading-relaxed">Slow simmered at 65°C to yield rich terracotta, peach sunrise, and deep crimson wine tones on raw silk.</p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-card border border-subtle tilt-card-3d stagger-item scroll-reveal-up border-t-4 border-turmeric flex flex-col justify-between h-full">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-[#E9A820] shadow-md mb-3"></div>
+              <h3 class="font-serif font-bold text-lg text-primary mb-1">Marigold Turmeric</h3>
+              <div class="text-xs text-turmeric-dark font-bold mb-2">Curcuma & Tagetes Flowers</div>
+              <p class="text-xs text-secondary leading-relaxed">Solar-infused temple blossoms providing luminous sunny golds that resist degradation through tannin fixing.</p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-card border border-subtle tilt-card-3d stagger-item scroll-reveal-up border-t-4 border-teal flex flex-col justify-between h-full">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-[#176B6B] shadow-md mb-3"></div>
+              <h3 class="font-serif font-bold text-lg text-primary mb-1">Forest Weld & Iron</h3>
+              <div class="text-xs text-teal font-bold mb-2">Reseda Luteola + Ferrous Water</div>
+              <p class="text-xs text-secondary leading-relaxed">Two-stage over-dyeing technique producing earthy moss, jade green, and mineral teal reflections on heavy linen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 03 — THE MASTER ARTISAN MANIFESTO (Editorial Quote & Split Statement)
+         ======================================================================= -->
+    <section id="manifesto" class="py-20 md:py-28 relative overflow-hidden">
+      <div class="bg-anim-organic-morph" aria-hidden="true">
+        <div class="bg-anim-morph-blob"></div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        <div class="lg:col-span-6 scroll-reveal-left">
+          <span class="section-kicker">Atelier Manifesto</span>
+          <h2 class="section-title">"Textiles Should Breathe the Atmosphere They Were Made In."</h2>
+          <p class="text-secondary text-lg mb-6 leading-relaxed">
+            Industrial synthetic fast-fashion has flattened the human relationship with color. We create textiles that possess natural variation, botanical memory, and human intention.
+          </p>
+          <div class="p-6 rounded-2xl bg-card border border-subtle">
+            <div class="font-serif italic text-base text-primary mb-2">
+              "When you dye with living plants, the water, sun, and season are imprinted forever onto the fiber."
+            </div>
+            <div class="text-xs font-bold text-terracotta uppercase tracking-wider">&mdash; Maya Lin, Atelier Master</div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 scroll-reveal-right">
+          <div class="rounded-3xl overflow-hidden shadow-2xl border border-subtle relative group">
+            <img src="assets/images/philosophy/p3.jpg" alt="Master artisan submerging indigo fabric into natural fermentation barrel" class="w-full h-[480px] object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute bottom-6 left-6 right-6 p-6 rounded-2xl bg-card/90 backdrop-blur-md border border-subtle">
+              <span class="text-xs font-bold uppercase tracking-wider text-white">Living Fermentation</span>
+              <p class="text-xs text-white mt-1">Vat #04: Active Sukumo Indigo fermenting with raw sugarcane and mineral water.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 04 — THREE RESIDENCY DISCIPLINES (Focus Tracks)
+         ======================================================================= -->
+    <section id="residency-tracks" class="py-20 md:py-20 bg-secondary border-y border-subtle relative overflow-hidden">
+      <div class="bg-anim-orbital-geo" aria-hidden="true">
+        <div class="bg-anim-orbital-ring bg-anim-orbital-ring-1"></div>
+        <div class="bg-anim-orbital-ring bg-anim-orbital-ring-2"></div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div class="text-center max-w-2xl mx-auto mb-16 scroll-reveal-up">
+          <span class="section-kicker justify-center">Immersive Disciplines</span>
+          <h2 class="section-title">The Three Atelier Study Tracks</h2>
+          <p class="text-secondary text-lg">Whether you are exploring resist geometry or ancient wax-canting, each pathway offers structured progression.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-parent items-stretch">
+          <div class="art-card tilt-card-3d p-6 bg-card flex flex-col justify-between stagger-item scroll-reveal-up h-full">
+            <div>
+              <div class="h-48 rounded-2xl overflow-hidden mb-4 shrink-0">
+                <img src="assets/images/custom/p15.jpg" alt="Intricate freehand canting wax pattern motif" class="w-full h-full object-cover">
+              </div>
+              <span class="card-tag tag-terracotta mb-2">Indonesian Tradition</span>
+              <h3 class="font-serif font-bold text-xl text-primary mb-1.5">Batik Canting Wax</h3>
+              <p class="text-xs text-secondary leading-relaxed mb-4">
+                Molten virgin beeswax is drawn by hand using hand-forged copper canting needles, locking in delicate hairline crackles upon boiling.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-subtle text-xs font-bold text-indigo mt-auto">Silk Apparel & Art Panels</div>
+          </div>
+
+          <div class="art-card tilt-card-3d p-6 bg-card flex flex-col justify-between stagger-item scroll-reveal-up h-full">
+            <div>
+              <div class="h-48 rounded-2xl overflow-hidden mb-4 shrink-0">
+                <img src="assets/images/custom/p16.jpg" alt="Geometric clamp-folding itajime wood plates" class="w-full h-full object-cover">
+              </div>
+              <span class="card-tag tag-indigo mb-2">Japanese Geometry</span>
+              <h3 class="font-serif font-bold text-xl text-primary mb-1.5">Itajime & Arashi Shibori</h3>
+              <p class="text-xs text-secondary leading-relaxed mb-4">
+                Accordion folding clamped firmly with carved cherrywood blocks, or tightly wound onto poles to create storm-like wave repetitions.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-subtle text-xs font-bold text-indigo mt-auto">Home Cushions & Silk Scarves</div>
+          </div>
+
+          <div class="art-card tilt-card-3d p-6 bg-card flex flex-col justify-between stagger-item scroll-reveal-up h-full">
+            <div>
+              <div class="h-48 rounded-2xl overflow-hidden mb-4 shrink-0">
+                <img src="assets/images/workshops/p17.jpg" alt="Modern ice dye and spiral tie-dye masterclass" class="w-full h-full object-cover">
+              </div>
+              <span class="card-tag tag-turmeric mb-2">Contemporary Lab</span>
+              <h3 class="font-serif font-bold text-xl text-primary mb-1.5">Botanical Ice Crystallization</h3>
+              <p class="text-xs text-secondary leading-relaxed mb-4">
+                Pure melting ice melts over botanical dye powders, separating pigments into watercolor geode blooms and celestial galaxies.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-subtle text-xs font-bold text-indigo mt-auto">Linen Throws & Tapestries</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 05 — SEASONAL CAPSULE LOOKBOOK (Magazine-Style Editorial Spread)
+         ======================================================================= -->
+    <section id="capsule-lookbook" class="py-20 md:py-20 relative overflow-hidden">
+      <div class="bg-anim-orbital-geo" aria-hidden="true">
+        <div class="bg-anim-orbital-circle1"></div>
+        <div class="bg-anim-orbital-circle2"></div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 scroll-reveal-up">
+          <div>
+            <span class="section-kicker">Autumn / Winter Capsule</span>
+            <h2 class="section-title">Hand-Dyed Apparel Lookbook</h2>
+          </div>
+          <a href="products.html" class="btn btn-outline self-start md:self-auto">Browse Full Catalog &rarr;</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 stagger-parent">
+          <div class="art-card tilt-card-3d p-6 bg-card flex flex-col sm:flex-row gap-6 items-center stagger-item scroll-reveal-up">
+            <div class="w-full sm:w-48 h-56 rounded-2xl overflow-hidden flex-shrink-0">
+              <img src="assets/images/products/p4.jpg" alt="Cerulean Indigo Silk Haori Kimono" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <span class="card-tag tag-indigo mb-2">Pure Silk Habotai</span>
+              <h3 class="font-serif text-2xl font-bold text-primary mb-2">Cerulean Haori Kimono</h3>
+              <p class="text-xs text-secondary leading-relaxed mb-4">Hand-painted coastal wave motifs dipped 14 times in Sukumo indigo.</p>
+              <div class="flex items-center justify-between">
+                <span class="font-display font-extrabold text-xl text-primary">$340</span>
+                <a href="products.html" class="btn btn-sm btn-outline">View Specs</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="art-card tilt-card-3d p-6 bg-card flex flex-col sm:flex-row gap-6 items-center stagger-item scroll-reveal-up">
+            <div class="w-full sm:w-48 h-56 rounded-2xl overflow-hidden flex-shrink-0">
+              <img src="assets/images/products/p5.jpg" alt="Terracotta & Turmeric Linen Overshirt" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <span class="card-tag tag-turmeric mb-2">Belgian Flax Linen</span>
+              <h3 class="font-serif text-2xl font-bold text-primary mb-2">Solar Strata Overshirt</h3>
+              <p class="text-xs text-secondary leading-relaxed mb-4">Foraged marigold and madder root dip with marbled wax-cracked selvedge.</p>
+              <div class="flex items-center justify-between">
+                <span class="font-display font-extrabold text-xl text-primary">$210</span>
+                <a href="products.html" class="btn btn-sm btn-outline">View Specs</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 06 — LIVE STUDIO FERMENTATION LOG (Real-Time Vat Status Board)
+         ======================================================================= -->
+    <section id="vat-log" class="py-20 md:py-20 bg-secondary border-y border-subtle relative overflow-hidden">
+      <div class="bg-anim-timeline-flow" aria-hidden="true">
+        <div class="bg-anim-timeline-glow"></div>
+      </div>
+      <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div class="text-center max-w-2xl mx-auto mb-14 scroll-reveal-up">
+          <span class="section-kicker justify-center">Live Atelier Telemetry</span>
+          <h2 class="section-title">Today's Active Fermentation Log</h2>
+          <p class="text-secondary">Our dye masters monitor the biological activity and temperature of our living fermentation barrels daily.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-parent items-stretch">
+          <!-- Barrel 01 -->
+          <div class="telemetry-card tilt-card-3d stagger-item scroll-reveal-up">
+            <div>
+              <div class="telemetry-header">
+                <span class="telemetry-title">Barrel 01: Sukumo Indigo</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-teal animate-ping mt-1 shrink-0" title="Active Fermentation"></span>
+              </div>
+              <div class="telemetry-metric text-indigo">pH 10.8</div>
+              <div class="telemetry-spec">Temperature: 41.5°C &bull; Active Bloom</div>
+            </div>
+            <div class="telemetry-queue">
+              <span>Dip Queue:</span>
+              <span class="font-bold text-primary">12 Silk Scarves</span>
+            </div>
+          </div>
+
+          <!-- Barrel 02 -->
+          <div class="telemetry-card tilt-card-3d stagger-item scroll-reveal-up">
+            <div>
+              <div class="telemetry-header">
+                <span class="telemetry-title">Barrel 02: Madder Root</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-teal animate-ping mt-1 shrink-0" title="Active Fermentation"></span>
+              </div>
+              <div class="telemetry-metric text-terracotta">pH 7.2</div>
+              <div class="telemetry-spec">Temperature: 64.0°C &bull; Extraction</div>
+            </div>
+            <div class="telemetry-queue">
+              <span>Dip Queue:</span>
+              <span class="font-bold text-primary">4 Linen Kimonos</span>
+            </div>
+          </div>
+
+          <!-- Barrel 03 -->
+          <div class="telemetry-card tilt-card-3d stagger-item scroll-reveal-up">
+            <div>
+              <div class="telemetry-header">
+                <span class="telemetry-title">Barrel 03: Temple Marigold</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-teal animate-ping mt-1 shrink-0" title="Active Fermentation"></span>
+              </div>
+              <div class="telemetry-metric text-turmeric-dark">pH 6.8</div>
+              <div class="telemetry-spec">Temperature: 50.0°C &bull; Solar Brew</div>
+            </div>
+            <div class="telemetry-queue">
+              <span>Dip Queue:</span>
+              <span class="font-bold text-primary">8 Dining Runners</span>
+            </div>
+          </div>
+
+          <!-- Barrel 04 -->
+          <div class="telemetry-card tilt-card-3d stagger-item scroll-reveal-up">
+            <div>
+              <div class="telemetry-header">
+                <span class="telemetry-title">Barrel 04: Iron Weld Shifting</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-teal animate-ping mt-1 shrink-0" title="Active Fermentation"></span>
+              </div>
+              <div class="telemetry-metric text-teal">pH 5.4</div>
+              <div class="telemetry-spec">Temperature: Ambient &bull; Shifting</div>
+            </div>
+            <div class="telemetry-queue">
+              <span>Dip Queue:</span>
+              <span class="font-bold text-primary">6 Waffle Blankets</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 07 — INTERACTIVE WORKSHOP DATE FINDER (Filterable Calendar View)
+         ======================================================================= -->
+    <section id="workshop-finder" class="py-20 md:py-20 relative overflow-hidden">
+      <div class="bg-anim-wave-calm" aria-hidden="true">
+        <div class="bg-anim-wave-ribbon"></div>
+      </div>
+      <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+        <div class="text-center max-w-2xl mx-auto mb-14 scroll-reveal-up">
+          <span class="section-kicker justify-center">Upcoming Sessions</span>
+          <h2 class="section-title">Reserve Your Seat at the Dye Vats</h2>
+          <p class="text-secondary text-lg">Sessions are capped at 8 participants to ensure individualized apprentice coaching.</p>
+        </div>
+
+        <div class="art-card p-6 sm:p-8 bg-card border border-subtle scroll-reveal-up">
+          <div class="space-y-4">
+            <div class="p-4 rounded-xl bg-secondary flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <span class="card-tag tag-terracotta mb-1">Saturday Morning</span>
+                <h3 class="font-serif font-bold text-lg text-primary">Batik Basics: Molten Wax & Indigo</h3>
+                <p class="text-xs text-secondary">10:00 AM – 01:30 PM &bull; All materials and take-home bandana included</p>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="text-xs font-bold text-teal">3 Spots Remaining</span>
+                <button class="btn btn-sm btn-terracotta" data-open-modal="workshop-modal" data-course-name="Batik Basics (Canting & Wax)">Book $85</button>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-secondary flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <span class="card-tag tag-indigo mb-1">Saturday Afternoon</span>
+                <h3 class="font-serif font-bold text-lg text-primary">Japanese Shibori & Itajime Clamp Lab</h3>
+                <p class="text-xs text-secondary">02:30 PM – 06:30 PM &bull; Includes 100% Pure Mulberry Silk Scarf</p>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="text-xs font-bold text-teal">2 Spots Remaining</span>
+                <button class="btn btn-sm btn-primary" data-open-modal="workshop-modal" data-course-name="Japanese Shibori (Itajime & Arashi)">Book $110</button>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-secondary flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <span class="card-tag tag-turmeric mb-1">Sunday Afternoon</span>
+                <h3 class="font-serif font-bold text-lg text-primary">Modern Ice Dye & Powder Dispersion</h3>
+                <p class="text-xs text-secondary">01:00 PM – 04:00 PM &bull; Bring up to 2 personal cotton garments</p>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="text-xs font-bold text-teal">4 Spots Remaining</span>
+                <button class="btn btn-sm btn-turmeric" data-open-modal="workshop-modal" data-course-name="Modern Tie-Dye & Ice Dye Lab">Book $95</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 08 — ATELIER VIP INVITATION BANNER
+         ======================================================================= -->
+    <section id="home2-cta" class="py-24 bg-indigo-900 text-white text-center relative overflow-hidden scroll-reveal-up">
+      <div class="bg-anim-radial-sweep" aria-hidden="true">
+        <div class="bg-anim-sweep-flare"></div>
+      </div>
+      <div class="max-w-4xl mx-auto px-6 relative z-10">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-turmeric font-bold text-xs uppercase tracking-widest mb-6">
+          Direct Studio Access
+        </span>
+        <h2 class="text-4xl sm:text-5xl font-serif font-bold mb-6 text-white leading-tight">
+          Commission a Bespoke Story or Schedule a Studio Tour
+        </h2>
+        <p class="text-slate-200 text-lg max-w-xl mx-auto mb-10 font-light">
+          Visit our walk-in swatch bar at 124 Artisan Alley or book a 15-minute consultation with Maya Lin.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="custom-orders.html" class="btn btn-turmeric btn-lg shadow-glow">Start Custom Commission</a>
+          <a href="contact.html" class="btn btn-outline-white btn-lg">Contact Concierge</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       GLOBAL WORKSHOP BOOKING MODAL
+       ========================================================================= -->
+  <div id="workshop-modal" class="art-modal" role="dialog" aria-modal="true" aria-labelledby="modal-workshop-title">
+    <div class="modal-backdrop"></div>
+    <div class="modal-box">
+      <button class="modal-close-btn" data-close-modal aria-label="Close modal">&times;</button>
+      <div class="mb-6">
+        <span class="card-tag tag-terracotta mb-2">Reserve Your Seat</span>
+        <h3 id="modal-workshop-title" class="text-2xl font-serif font-bold text-primary">Book Atelier Workshop</h3>
+        <p class="text-sm text-secondary">Join us at 124 Artisan Alley. All natural dyes, organic textiles, and tools provided.</p>
+      </div>
+
+      <form id="workshop-booking-form">
+        <div class="form-group">
+          <label class="form-label" for="modal-workshop-select">Select Workshop</label>
+          <select id="modal-workshop-select" class="form-select" required>
+            <option value="Batik Basics (Canting & Wax)">Batik Basics (Canting & Wax) — $85</option>
+            <option value="Japanese Shibori (Itajime & Arashi)">Japanese Shibori (Itajime & Arashi) — $110</option>
+            <option value="Modern Tie-Dye & Ice Dye Lab">Modern Tie-Dye & Ice Dye Lab — $95</option>
+            <option value="Master Artisan Residency (2-Day Intensive)">Master Artisan Residency (2-Day Intensive) — $340</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 form-group">
+          <div>
+            <label class="form-label" for="booking-date">Preferred Date</label>
+            <input type="date" id="booking-date" class="form-input" required>
+          </div>
+          <div>
+            <label class="form-label" for="booking-guests">Number of Guests</label>
+            <select id="booking-guests" class="form-select">
+              <option value="1">1 Person</option>
+              <option value="2">2 People (Pair Discount 10%)</option>
+              <option value="3">3 People</option>
+              <option value="4">4 People (Group Table)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="booking-name">Full Name</label>
+          <input type="text" id="booking-name" class="form-input" placeholder="e.g. Maya Chen" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="booking-email">Email Address</label>
+          <input type="email" id="booking-email" class="form-input" placeholder="maya@example.com" required>
+        </div>
+
+        <button type="submit" class="btn btn-terracotta w-full justify-center mt-2">Confirm Atelier Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SITE FOOTER
+       ========================================================================= -->
+  <footer class="site-footer overflow-hidden">
+    <div class="bg-anim-footer-subtle" aria-hidden="true"></div>
+    <div class="footer-top">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="logo-icon-wrap">
+            <svg class="logo-icon-svg text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+          </div>
+          <div>
+            <div class="brand-text">AURA ATELIER</div>
+            <div class="footer-brand-subtitle">BATIK &amp; TEXTILE STUDIO</div>
+          </div>
+        </div>
+        <p class="footer-brand-desc">
+          A dedicated sanctuary for Indonesian wax-resist Batik, Japanese Shibori geometry, and wild botanical dye fermentation.
+        </p>
+        <div class="text-xs font-semibold text-terracotta">124 Artisan Alley, Textile District &bull; +1 (555) 234-DYES</div>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-primary mb-4">Explore</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html" class="hover:text-terracotta transition-colors">Home 1 (Artisan Flow)</a></li>
+          <li><a href="home-2.html" class="hover:text-terracotta transition-colors">Home 2 (Dye Lab)</a></li>
+          <li><a href="gallery.html" class="hover:text-terracotta transition-colors">Gallery / Lookbook</a></li>
+          <li><a href="products.html" class="hover:text-terracotta transition-colors">Products & Lookbook</a></li>
+          <li><a href="workshops.html" class="hover:text-terracotta transition-colors">Masterclasses & Dates</a></li>
+          <li><a href="custom-orders.html" class="hover:text-terracotta transition-colors">Bespoke Commissions</a></li>
+          <li><a href="contact.html" class="hover:text-terracotta transition-colors">Studio & Swatch Bar</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-primary mb-4">Live Vats</h4>
+        <ul class="space-y-2 text-sm">
+          <li><span class="hover:text-indigo transition-colors cursor-pointer">Sukumo Indigo 60°</span></li>
+          <li><span class="hover:text-indigo transition-colors cursor-pointer">Madder Root Terracotta</span></li>
+          <li><span class="hover:text-indigo transition-colors cursor-pointer">Temple Marigold Yellow</span></li>
+          <li><span class="hover:text-indigo transition-colors cursor-pointer">Iron Oak Gall Teal</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-primary mb-4">Hours</h4>
+        <div class="text-sm text-secondary space-y-1">
+          <p><strong class="text-primary">Tue – Fri:</strong> 10am – 6pm</p>
+          <p><strong class="text-primary">Saturday:</strong> 9am – 7pm</p>
+          <p><strong class="text-primary">Sunday:</strong> 11am – 5pm</p>
+          <p><strong class="text-primary">Monday:</strong> Vat Brewing (Closed)</p>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-primary mb-4">Research & Residencies</h4>
+        <p class="text-xs text-secondary leading-relaxed mb-3">
+          We host visiting textile researchers and natural dye apprentices every autumn and spring term.
+        </p>
+        <span class="card-tag tag-indigo text-[10px]">Apprenticeship Applications Open</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; 2026 Aura Atelier Batik &amp; Tie-Dye Studio. All handcrafted rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="assets/image-sources.md" class="footer-bottom-link">Image Licensing Record</a>
+        <a href="contact.html" class="footer-bottom-link">Privacy &amp; Terms</a>
+        <a href="contact.html" class="footer-bottom-link">Laboratory Protocol</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
