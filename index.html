@@ -45,11 +45,8 @@
   </div>
 
   <!-- =========================================================================
-       0. FLOATING BACK TO TOP & FIXED THEME TOGGLE BUTTONS
+       0. FLOATING BACK TO TOP BUTTON
        ========================================================================= -->
-  <button id="fixed-theme-toggle" class="theme-toggle-btn fixed-theme-toggle-btn" aria-label="Toggle dark and light mode">
-    <svg class="w-5 h-5 text-slate-700 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-  </button>
   <button id="back-to-top" aria-label="Scroll back to top">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
   </button>
@@ -177,7 +174,7 @@
       <!-- Dedicated Mobile Drawer Controls: Dark Mode & RTL Switches -->
       <div class="drawer-utility-section">
         <!-- Dark Mode Row Button -->
-        <button type="button" class="drawer-utility-btn drawer-theme-toggle theme-toggle-btn" aria-label="Toggle dark and light mode">
+        <button type="button" class="drawer-utility-btn drawer-theme-toggle" aria-label="Toggle dark and light mode">
           <div class="drawer-utility-left">
             <div class="drawer-utility-icon theme-drawer-icon">
               <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
@@ -258,7 +255,7 @@
           <!-- Studio Metrics Strip with Numerical Counter Animation -->
           <div class="grid grid-cols-3 gap-6 pt-10 mt-10 border-t border-subtle">
             <div>
-              <div class="text-2xl sm:text-3xl font-display font-extrabold text-indigo" data-target-counter="100" data-counter-suffix="%">100%</div>
+              <div class="text-2xl sm:text-3xl font-display font-extrabold text-turmeric-600 dark:text-turmeric" data-target-counter="100" data-counter-suffix="%">100%</div>
               <div class="text-xs sm:text-sm font-semibold text-secondary uppercase tracking-wider">Botanical Dyes</div>
             </div>
             <div>
@@ -334,7 +331,7 @@
           <div class="space-y-4 pt-4 border-t border-subtle">
             <div class="minimal-spec-row">
               <div class="flex items-center gap-4">
-                <span class="w-8 h-8 rounded-full bg-indigo/15 text-indigo font-bold flex items-center justify-center text-xs">01</span>
+                <span class="w-8 h-8 rounded-full bg-turmeric/20 text-turmeric-700 dark:text-turmeric font-bold flex items-center justify-center text-xs">01</span>
                 <div>
                   <h3 class="font-bold text-primary text-sm">Zero-Waste Dye Liquor Recycling</h3>
                   <p class="text-xs text-secondary">Exhausted plant baths are neutralized to nourish our rooftop sanctuary garden.</p>
@@ -581,19 +578,19 @@
             <p class="text-xs text-secondary leading-relaxed mb-6 italic">
               "When you hold a copper canting tool over warm silk, there is no erasing. The wax demands complete presence of mind and breath."
             </p>
-            <div class="mt-auto pt-3 border-t border-subtle/50 text-xs font-bold text-indigo w-full">18 Years of Wax Craft</div>
+            <div class="mt-auto pt-3 border-t border-subtle/50 text-xs font-bold text-terracotta dark:text-turmeric-400 w-full">18 Years of Wax Craft</div>
           </div>
 
           <div class="art-card tilt-card-3d p-6 bg-card flex flex-col items-center text-center stagger-item scroll-reveal-up h-full">
-            <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-indigo/30 mb-4 shadow-md mx-auto shrink-0">
+            <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-turmeric/30 mb-4 shadow-md mx-auto shrink-0">
               <img src="assets/images/philosophy/artisan-kenji.jpg" alt="Kenji Sato - Shibori Master & Dye Chemist" class="w-full h-full object-cover">
             </div>
             <h3 class="text-xl font-serif font-bold text-primary mb-1">Kenji Sato</h3>
-            <span class="text-xs font-bold uppercase tracking-wider text-indigo mb-3">Shibori Master & Fermentation Lead</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-turmeric-600 dark:text-turmeric mb-3">Shibori Master & Fermentation Lead</span>
             <p class="text-xs text-secondary leading-relaxed mb-6 italic">
               "An indigo vat is alive. It drinks fructose, breathes oxygen, and responds to humidity. We don't control the blue; we nurture it."
             </p>
-            <div class="mt-auto pt-3 border-t border-subtle/50 text-xs font-bold text-indigo w-full">Kyoto Guild Trained</div>
+            <div class="mt-auto pt-3 border-t border-subtle/50 text-xs font-bold text-terracotta dark:text-turmeric-400 w-full">Kyoto Guild Trained</div>
           </div>
 
           <div class="art-card tilt-card-3d p-6 bg-card flex flex-col items-center text-center stagger-item scroll-reveal-up h-full">
@@ -1191,11 +1188,11 @@
       <div>
         <h4 class="font-display font-bold text-primary mb-4">Techniques</h4>
         <ul class="space-y-2 text-sm">
-          <li><span class="hover:text-indigo transition-colors cursor-pointer">Batik Canting Wax</span></li>
-          <li><span class="hover:text-indigo transition-colors cursor-pointer">Itajime Wood Clamp</span></li>
-          <li><span class="hover:text-indigo transition-colors cursor-pointer">Arashi Pole Shibori</span></li>
-          <li><span class="hover:text-indigo transition-colors cursor-pointer">Fermented Indigo Vat</span></li>
-          <li><span class="hover:text-indigo transition-colors cursor-pointer">Ice Dye Crystallization</span></li>
+          <li><span class="hover:text-terracotta dark:hover:text-turmeric transition-colors cursor-pointer">Batik Canting Wax</span></li>
+          <li><span class="hover:text-terracotta dark:hover:text-turmeric transition-colors cursor-pointer">Itajime Wood Clamp</span></li>
+          <li><span class="hover:text-terracotta dark:hover:text-turmeric transition-colors cursor-pointer">Arashi Pole Shibori</span></li>
+          <li><span class="hover:text-terracotta dark:hover:text-turmeric transition-colors cursor-pointer">Fermented Indigo Vat</span></li>
+          <li><span class="hover:text-terracotta dark:hover:text-turmeric transition-colors cursor-pointer">Ice Dye Crystallization</span></li>
         </ul>
       </div>
 
