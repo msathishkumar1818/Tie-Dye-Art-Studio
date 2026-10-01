@@ -67,7 +67,6 @@ function initTheme() {
       const isDark = document.documentElement.classList.toggle('dark');
       localStorage.setItem('art_studio_theme', isDark ? 'dark' : 'light');
       updateThemeToggleIcons();
-      showToast(isDark ? '🌙 Switched to Dark Studio Mode' : '☀️ Switched to Sunlit Light Mode', 'info');
     });
   });
 }
@@ -116,7 +115,6 @@ function initDirection() {
       document.documentElement.setAttribute('dir', newDir);
       localStorage.setItem('art_studio_dir', newDir);
       updateRTLButtons(newDir);
-      showToast(newDir === 'rtl' ? '🔄 Direction changed to RTL' : '🔄 Direction changed to LTR', 'info');
     });
   });
 }
@@ -341,19 +339,38 @@ function initHomeDropdown() {
     });
   }
 
-  // Desktop Click toggle support
+  // Desktop: Hover + Click support
   const dropdownWrappers = document.querySelectorAll('.nav-dropdown-wrapper');
+  let hoverCloseTimer = null;
+
   dropdownWrappers.forEach(wrap => {
     const trigger = wrap.querySelector('.nav-dropdown-trigger');
-    if (trigger) {
-      trigger.addEventListener('click', (e) => {
-        if (window.innerWidth >= 1200) {
-          e.preventDefault();
-          e.stopPropagation();
-          toggleHomeDropdown();
-        }
-      });
-    }
+    const menu = wrap.querySelector('.nav-dropdown-menu');
+
+    if (!trigger || !menu) return;
+
+    // --- HOVER: open on mouseenter wrapper ---
+    wrap.addEventListener('mouseenter', () => {
+      if (window.innerWidth < 1024) return;
+      if (hoverCloseTimer) { clearTimeout(hoverCloseTimer); hoverCloseTimer = null; }
+      openHomeDropdown();
+    });
+
+    // --- HOVER: close on mouseleave wrapper (with small delay) ---
+    wrap.addEventListener('mouseleave', () => {
+      if (window.innerWidth < 1024) return;
+      hoverCloseTimer = setTimeout(() => {
+        closeHomeDropdown();
+      }, 120);
+    });
+
+    // --- CLICK: toggle on trigger click (keyboard / touch fallback) ---
+    trigger.addEventListener('click', (e) => {
+      if (window.innerWidth < 1024) return;
+      e.preventDefault();
+      e.stopPropagation();
+      toggleHomeDropdown();
+    });
   });
 
   // Close desktop dropdown when clicking dropdown items (Home 1, Home 2)
@@ -377,6 +394,7 @@ function initHomeDropdown() {
     }
   });
 }
+
 
 /* ==========================================================================
    6. MOBILE NAVIGATION DRAWER & MENU BUTTON
@@ -1040,7 +1058,7 @@ function initFormSubmissions() {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = contactForm.querySelector('[name="name"]')?.value || 'Friend';
-      showToast(`✨ Thank you, ${name}! Your inquiry has been sent to Maya & the Atelier team.`, 'success');
+      showToast(`Thank you, ${name}! Your inquiry has been sent to Maya & the Atelier team.`, 'success');
       contactForm.reset();
     });
   }
@@ -1053,7 +1071,7 @@ function initFormSubmissions() {
       const modal = document.getElementById('workshop-modal');
       if (modal) modal.classList.remove('active');
       document.body.style.overflow = '';
-      showToast(`🎉 Reservation confirmed for ${workshop}! Check your email for dye preparation details.`, 'success');
+      showToast(`Reservation confirmed for ${workshop}! Check your email for dye preparation details.`, 'success');
       bookingForm.reset();
     });
   }
@@ -1062,7 +1080,7 @@ function initFormSubmissions() {
   if (customForm) {
     customForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      showToast(`🎨 Custom commission brief received! Our master artisan will review your palette within 24 hours.`, 'success');
+      showToast(`Custom commission brief received! Our master artisan will review your palette within 24 hours.`, 'success');
       customForm.reset();
     });
   }
@@ -1070,7 +1088,7 @@ function initFormSubmissions() {
   document.querySelectorAll('.newsletter-form').forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      showToast('💌 Welcome to the Atelier Dispatch! You will receive our monthly dye recipe & lookbook.', 'success');
+      showToast('Welcome to the Atelier Dispatch! You will receive our monthly dye recipe & lookbook.', 'success');
       form.reset();
     });
   });
@@ -1087,8 +1105,11 @@ function showToast(message, type = 'info') {
     document.body.appendChild(container);
   }
 
+  // Clear any previous toasts immediately so they never stack up
+  container.innerHTML = '';
+
   const toast = document.createElement('div');
-  toast.className = 'toast';
+  toast.className = 'toast flex items-center gap-2.5';
   
   if (type === 'success') {
     toast.style.borderLeftColor = 'var(--color-teal)';
@@ -1096,9 +1117,15 @@ function showToast(message, type = 'info') {
     toast.style.borderLeftColor = 'var(--color-turmeric)';
   }
 
+  const iconSvg = type === 'success'
+    ? `<svg class="w-5 h-5 text-teal shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>`
+    : (type === 'warning'
+      ? `<svg class="w-5 h-5 text-turmeric shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>`
+      : `<svg class="w-5 h-5 text-indigo-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`);
+
   toast.innerHTML = `
-    <span class="text-xl">✨</span>
-    <span>${message}</span>
+    ${iconSvg}
+    <span class="text-sm font-medium">${message}</span>
   `;
 
   container.appendChild(toast);
@@ -1108,7 +1135,7 @@ function showToast(message, type = 'info') {
     toast.style.transform = 'translateY(10px)';
     toast.style.transition = 'all 0.3s ease';
     setTimeout(() => toast.remove(), 300);
-  }, 4500);
+  }, 3200);
 }
 
 /* ==========================================================================
