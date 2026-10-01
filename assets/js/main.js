@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordions();
   initColorSwatches();
   initProductFilters();
+  initCustomSelects();
   initCustomOrderEstimator();
   initFormSubmissions();
   initLocationMap3D();
@@ -712,7 +713,10 @@ function initModals() {
         const courseName = btn.getAttribute('data-course-name');
         if (courseName) {
           const select = targetModal.querySelector('#modal-workshop-select');
-          if (select) select.value = courseName;
+          if (select) {
+            select.value = courseName;
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+          }
         }
         
         targetModal.classList.add('active');
@@ -825,6 +829,164 @@ function initProductFilters() {
         }
       });
     });
+  });
+}
+
+/* ==========================================================================
+   13.5. CUSTOM BESPOKE FORM SELECT DROPDOWNS
+   ========================================================================== */
+function initCustomSelects() {
+  const selects = document.querySelectorAll('select.form-select, form select:not([multiple]):not(.no-custom-select)');
+  if (!selects.length) return;
+
+  selects.forEach(select => {
+    if (select.dataset.customSelectInitialized === 'true') return;
+    select.dataset.customSelectInitialized = 'true';
+
+    // Wrap the native select in custom-select-wrapper
+    const wrapper = document.createElement('div');
+    wrapper.className = 'custom-select-wrapper';
+    select.parentNode.insertBefore(wrapper, select);
+    wrapper.appendChild(select);
+
+    // Create trigger button
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'custom-select-trigger';
+    trigger.setAttribute('aria-haspopup', 'listbox');
+    trigger.setAttribute('aria-expanded', 'false');
+
+    const labelSpan = document.createElement('span');
+    labelSpan.className = 'custom-select-label';
+    const selectedOption = select.options[select.selectedIndex] || select.options[0];
+    labelSpan.textContent = selectedOption ? selectedOption.textContent : 'Select option...';
+
+    const arrowIcon = document.createElement('span');
+    arrowIcon.className = 'custom-select-arrow';
+    arrowIcon.innerHTML = `<svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>`;
+
+    trigger.appendChild(labelSpan);
+    trigger.appendChild(arrowIcon);
+    wrapper.appendChild(trigger);
+
+    // Create dropdown menu
+    const menu = document.createElement('div');
+    menu.className = 'custom-select-menu';
+    menu.setAttribute('role', 'listbox');
+
+    function buildMenuOptions() {
+      menu.innerHTML = '';
+      Array.from(select.options).forEach((opt, idx) => {
+        const optionEl = document.createElement('div');
+        const isSelected = (idx === select.selectedIndex);
+        optionEl.className = 'custom-select-option' + (isSelected ? ' selected' : '');
+        optionEl.setAttribute('role', 'option');
+        optionEl.setAttribute('data-value', opt.value);
+
+        const textSpan = document.createElement('span');
+        textSpan.className = 'custom-option-text';
+        textSpan.textContent = opt.textContent;
+        optionEl.appendChild(textSpan);
+
+        if (isSelected) {
+          const checkSpan = document.createElement('span');
+          checkSpan.className = 'custom-option-check';
+          checkSpan.innerHTML = `<svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>`;
+          optionEl.appendChild(checkSpan);
+        }
+
+        optionEl.addEventListener('click', (e) => {
+          e.stopPropagation();
+          select.selectedIndex = idx;
+          select.value = opt.value;
+          updateLabel();
+          closeMenu();
+          select.dispatchEvent(new Event('change', { bubbles: true }));
+          select.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+
+        menu.appendChild(optionEl);
+      });
+    }
+
+    function updateLabel() {
+      const currentOpt = select.options[select.selectedIndex];
+      if (currentOpt) {
+        labelSpan.textContent = currentOpt.textContent;
+      }
+      buildMenuOptions();
+    }
+
+    buildMenuOptions();
+
+    function openMenu() {
+      document.querySelectorAll('.custom-select-wrapper.is-open').forEach(other => {
+        if (other !== wrapper) {
+          other.classList.remove('is-open');
+          const otherTrig = other.querySelector('.custom-select-trigger');
+          if (otherTrig) otherTrig.setAttribute('aria-expanded', 'false');
+        }
+      });
+      wrapper.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMenu() {
+      wrapper.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (wrapper.classList.contains('is-open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    // Listen to native select change events (for programmatic updates)
+    select.addEventListener('change', () => {
+      const currentOpt = select.options[select.selectedIndex];
+      if (currentOpt) {
+        labelSpan.textContent = currentOpt.textContent;
+      }
+      buildMenuOptions();
+    });
+
+    // Handle form reset
+    const parentForm = select.closest('form');
+    if (parentForm) {
+      parentForm.addEventListener('reset', () => {
+        setTimeout(() => {
+          updateLabel();
+        }, 10);
+      });
+    }
+
+    wrapper.appendChild(menu);
+  });
+
+  // Close menus on click outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.custom-select-wrapper')) {
+      document.querySelectorAll('.custom-select-wrapper.is-open').forEach(w => {
+        w.classList.remove('is-open');
+        const trig = w.querySelector('.custom-select-trigger');
+        if (trig) trig.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  // Close menus on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.custom-select-wrapper.is-open').forEach(w => {
+        w.classList.remove('is-open');
+        const trig = w.querySelector('.custom-select-trigger');
+        if (trig) trig.setAttribute('aria-expanded', 'false');
+      });
+    }
   });
 }
 

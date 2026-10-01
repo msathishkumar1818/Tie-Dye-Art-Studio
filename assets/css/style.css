@@ -1579,42 +1579,15 @@ html.dark .bg-anim-tech-grid {
   100% { background-position: 40px 40px; }
 }
 
-/* 4. ORBITAL GEOMETRIC PARTICLES (Floating abstract geometry & depth) */
-.bg-anim-orbital-geo {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.bg-anim-orbital-circle1 {
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  border: 1px dashed rgba(36, 59, 107, 0.15);
-  top: 15%;
-  right: 5%;
-  animation: orbitalRotate 30s linear infinite;
-  will-change: transform;
-}
-
-.bg-anim-orbital-circle2 {
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  border: 1px solid rgba(200, 90, 62, 0.12);
-  bottom: 20%;
-  left: 5%;
-  animation: orbitalRotate 22s linear infinite reverse;
-  will-change: transform;
-}
-
-@keyframes orbitalRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* 4. ORBITAL GEOMETRIC PARTICLES (Floating abstract geometry & depth) - REMOVED AS REQUESTED */
+.bg-anim-orbital-geo,
+.bg-anim-orbital-circle1,
+.bg-anim-orbital-circle2,
+.bg-anim-orbital-ring {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* 5. TIMELINE FLOW (Moving timeline stroke & pulse) */
@@ -1922,6 +1895,19 @@ html.dark .btn-outline-white:focus-visible {
   color: var(--text-primary);
   font-weight: 700;
   transition: all var(--transition-fast);
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 .product-filter-btn:hover {
@@ -2310,6 +2296,219 @@ html[dir="rtl"] .modal-close-btn {
   border-color: var(--color-indigo);
   box-shadow: 0 0 0 3px rgba(36, 59, 107, 0.15);
   background: var(--bg-card);
+}
+
+/* Universal Fallback for Native Form Select & Options */
+select,
+.form-select {
+  font-size: 0.925rem !important;
+  line-height: 1.4 !important;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+select option,
+.form-select option {
+  font-size: 0.9rem !important;
+  font-family: var(--font-sans) !important;
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  padding: 0.6rem 0.9rem !important;
+  line-height: 1.4 !important;
+}
+
+html.dark select option,
+html.dark .form-select option {
+  background-color: #1a221f !important;
+  color: #f1f5f9 !important;
+}
+
+/* ==========================================================================
+   STUDIO BESPOKE CUSTOM SELECT DROPDOWNS (Prevents OS dropdown bugs)
+   ========================================================================== */
+.custom-select-wrapper {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+/* Hide native select visually but keep fully accessible to forms */
+.custom-select-wrapper select.form-select,
+.custom-select-wrapper select {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
+/* Custom Trigger Button */
+.custom-select-trigger {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.925rem;
+  line-height: 1.4;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  cursor: pointer;
+  outline: none;
+  transition: all var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.custom-select-trigger:hover {
+  border-color: var(--color-indigo);
+  background: var(--bg-card);
+}
+
+.custom-select-wrapper.is-open .custom-select-trigger,
+.custom-select-trigger:focus-visible {
+  border-color: var(--color-indigo);
+  box-shadow: 0 0 0 3px rgba(36, 59, 107, 0.15);
+  background: var(--bg-card);
+}
+
+html.dark .custom-select-trigger:hover,
+html.dark .custom-select-wrapper.is-open .custom-select-trigger,
+html.dark .custom-select-trigger:focus-visible {
+  border-color: var(--color-turmeric);
+  box-shadow: 0 0 0 3px rgba(233, 168, 32, 0.2);
+}
+
+.custom-select-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.custom-select-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.custom-select-wrapper.is-open .custom-select-arrow {
+  transform: rotate(180deg);
+  color: var(--color-terracotta);
+}
+
+html.dark .custom-select-wrapper.is-open .custom-select-arrow {
+  color: var(--color-turmeric);
+}
+
+/* Custom Dropdown Menu */
+.custom-select-menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 32px rgba(18, 26, 23, 0.14), 0 2px 8px rgba(18, 26, 23, 0.08);
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  padding: 0.35rem 0;
+  scrollbar-width: thin;
+}
+
+.custom-select-wrapper.is-open .custom-select-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html.dark .custom-select-menu {
+  background: #17211d;
+  border-color: var(--border-subtle);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Custom Options */
+.custom-select-option {
+  padding: 0.65rem 1rem;
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.35;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.custom-select-option:last-child {
+  border-bottom: none;
+}
+
+.custom-select-option:hover {
+  background: var(--bg-tertiary);
+  color: var(--color-terracotta);
+  padding-left: 1.25rem;
+}
+
+.custom-select-option.selected {
+  background: rgba(200, 90, 62, 0.09);
+  color: var(--color-terracotta);
+  font-weight: 700;
+}
+
+html.dark .custom-select-option {
+  border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+
+html.dark .custom-select-option:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-turmeric-light);
+  padding-left: 1.25rem;
+}
+
+html.dark .custom-select-option.selected {
+  background: rgba(233, 168, 32, 0.14);
+  color: var(--color-turmeric-light);
+  font-weight: 700;
+}
+
+.custom-option-text {
+  flex: 1;
+}
+
+.custom-option-check {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-terracotta);
+  flex-shrink: 0;
+}
+
+html.dark .custom-option-check {
+  color: var(--color-turmeric);
 }
 
 /* Accordion Component */
@@ -8021,11 +8220,11 @@ html.dark .archive-interact-slide:hover .archive-tile-name {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-subtle);
-  padding: 1.5rem;
+  padding: 0;
+  overflow: hidden;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.5s;
 }
 
@@ -8040,6 +8239,7 @@ html.dark .archive-interact-slide:hover .archive-tile-name {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 1.25rem 1.5rem 1rem;
 }
 
 .storyline-phase-pill {
@@ -8077,9 +8277,10 @@ html.dark .archive-interact-slide:hover .archive-tile-name {
 
 .storyline-img-box {
   width: 100%;
-  height: 200px;
-  border-radius: var(--radius-md);
+  height: 220px;
+  border-radius: 0;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .storyline-img {
@@ -8091,6 +8292,14 @@ html.dark .archive-interact-slide:hover .archive-tile-name {
 
 .storyline-card:hover .storyline-img {
   transform: scale(1.08);
+}
+
+.storyline-content {
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
 }
 
 .storyline-title {
@@ -9641,4 +9850,208 @@ html.dark .site-footer a:hover,
 html.dark footer span.cursor-pointer:hover {
   color: var(--color-turmeric-light) !important;
   text-shadow: 0 0 8px rgba(244, 197, 66, 0.4);
+}
+
+/* ==========================================================================
+   UNIFORM PAGE HERO ARCHITECTURE (Even height across all secondary pages)
+   ========================================================================== */
+.standard-page-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 768px) {
+  .standard-page-hero {
+    min-height: 580px;
+    height: 580px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+/* Contrast & Accessibility Enhancements */
+.text-teal-light {
+  color: #38bdf8 !important;
+}
+.text-terracotta-light {
+  color: #fb7185 !important;
+}
+.text-turmeric-light {
+  color: #fde047 !important;
+}
+
+/* ==========================================================================
+   TABLET / TAB VIEW TYPOGRAPHY ENHANCEMENTS (All Pages: 601px - 1024px)
+   ========================================================================== */
+@media (min-width: 601px) and (max-width: 1024px) {
+  /* Increase Root REM Base Scale from 16px to 17.5px */
+  html {
+    font-size: 17.5px !important;
+  }
+
+  body {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  /* Hero & Page Headings */
+  h1, .hero-title {
+    font-size: clamp(2.4rem, 5.5vw, 3.6rem) !important;
+    line-height: 1.22 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  /* Section Titles & Subtitles */
+  h2, .section-title {
+    font-size: clamp(1.95rem, 4.2vw, 2.75rem) !important;
+    line-height: 1.28 !important;
+    letter-spacing: -0.015em !important;
+  }
+
+  h3 {
+    font-size: clamp(1.35rem, 3vw, 1.75rem) !important;
+    line-height: 1.35 !important;
+  }
+
+  h4 {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Section Kickers & Eyebrow Tags */
+  .section-kicker {
+    font-size: 0.85rem !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .card-tag {
+    font-size: 0.82rem !important;
+    padding: 0.4rem 0.85rem !important;
+  }
+
+  /* Paragraphs & Descriptions */
+  p, .section-desc {
+    font-size: 1.05rem !important;
+    line-height: 1.75 !important;
+  }
+
+  p.text-xs, .text-xs {
+    font-size: 0.875rem !important; /* ~15.3px */
+    line-height: 1.6 !important;
+  }
+
+  p.text-sm, .text-sm {
+    font-size: 0.975rem !important; /* ~17px */
+    line-height: 1.65 !important;
+  }
+
+  p.text-base, .text-base {
+    font-size: 1.125rem !important; /* ~19.7px */
+    line-height: 1.75 !important;
+  }
+
+  p.text-lg, .text-lg {
+    font-size: 1.28rem !important; /* ~22.4px */
+    line-height: 1.75 !important;
+  }
+
+  /* Card Headings & Text */
+  .art-card h3,
+  .product-item-card h3 {
+    font-size: 1.35rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .art-card p,
+  .product-item-card p {
+    font-size: 0.925rem !important;
+    line-height: 1.65 !important;
+  }
+
+  /* Pricing & Numerical Displays */
+  .font-display.font-extrabold {
+    font-size: 1.45rem !important;
+  }
+
+  #estimate-price-output {
+    font-size: 1.55rem !important;
+  }
+
+  /* Buttons & Action Links */
+  .btn {
+    font-size: 0.95rem !important;
+    padding: 0.65rem 1.4rem !important;
+  }
+
+  .btn-sm {
+    font-size: 0.875rem !important;
+    padding: 0.5rem 1.15rem !important;
+  }
+
+  .btn-lg {
+    font-size: 1.15rem !important;
+    padding: 0.9rem 2.2rem !important;
+  }
+
+  /* Form Elements */
+  .form-label {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.45rem !important;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-size: 1rem !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  /* Navigation Bar & Mobile Drawer */
+  .brand-text {
+    font-size: 1.15rem !important;
+  }
+
+  .brand-subtext {
+    font-size: 0.55rem !important;
+  }
+
+  .nav-link {
+    font-size: 0.975rem !important;
+  }
+
+  .drawer-link {
+    font-size: 1.1rem !important;
+    padding: 0.75rem 0.5rem !important;
+  }
+
+  /* Footer Links & Typography */
+  .site-footer h4,
+  .footer-top h4 {
+    font-size: 1.05rem !important;
+  }
+
+  .site-footer a,
+  .footer-top ul li a {
+    font-size: 0.95rem !important;
+  }
+
+  .footer-brand-desc {
+    font-size: 0.95rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .footer-copyright {
+    font-size: 0.85rem !important;
+  }
+
+  .footer-bottom-link {
+    font-size: 0.82rem !important;
+  }
 }
