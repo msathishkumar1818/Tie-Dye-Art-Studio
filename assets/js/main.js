@@ -1514,14 +1514,18 @@ function initGalleryPage() {
   const stepCards = document.querySelectorAll('.storyline-card');
 
   if (storylineSection) {
+    let manualSelectTimer = null;
+
     const updateStorylineProgress = () => {
+      if (manualSelectTimer) return;
       const rect = storylineSection.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
       if (rect.top < windowHeight && rect.bottom > 0) {
-        const total = rect.height + windowHeight;
-        const visible = windowHeight - rect.top;
-        const ratio = Math.max(0, Math.min(1, visible / (total * 0.85)));
+        const triggerStart = windowHeight * 0.85;
+        const triggerEnd = windowHeight * 0.25;
+        const progress = (triggerStart - rect.top) / (triggerStart - triggerEnd);
+        const ratio = Math.max(0, Math.min(1, progress));
 
         if (progressLine) {
           const dashOffset = 1200 - (ratio * 1200);
@@ -1529,18 +1533,40 @@ function initGalleryPage() {
         }
 
         stepCards.forEach((card, index) => {
-          const cardThreshold = (index + 0.3) / stepCards.length;
+          const cardThreshold = index * 0.24; // 0, 0.24, 0.48, 0.72 -> all active when section is in view
           if (ratio >= cardThreshold) {
             card.classList.add('active');
           } else {
             card.classList.remove('active');
           }
         });
+      } else if (rect.bottom <= 0) {
+        // Scrolled past section: all cards remain active and line complete
+        if (progressLine) progressLine.style.strokeDashoffset = 0;
+        stepCards.forEach(card => card.classList.add('active'));
       }
     };
 
     window.addEventListener('scroll', updateStorylineProgress, { passive: true });
     updateStorylineProgress();
+
+    // Click on any storyline card to highlight it
+    stepCards.forEach((card, index) => {
+      card.addEventListener('click', () => {
+        stepCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+
+        if (progressLine) {
+          const targetRatio = (index + 1) / stepCards.length;
+          progressLine.style.strokeDashoffset = 1200 - (targetRatio * 1200);
+        }
+
+        clearTimeout(manualSelectTimer);
+        manualSelectTimer = setTimeout(() => {
+          manualSelectTimer = null;
+        }, 3500);
+      });
+    });
   }
 
   // 4. Macro Texture Study Cursor Exploration (Desktop)

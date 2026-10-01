@@ -2137,9 +2137,21 @@ html.dark .hover\:text-indigo:hover {
   letter-spacing: 0.08em;
   padding: 0.3rem 0.75rem;
   border-radius: var(--radius-full);
+  white-space: nowrap !important;
+  flex-shrink: 0;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.site-footer .card-tag {
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  font-size: 0.68rem !important;
+  padding: 0.25rem 0.65rem !important;
+  letter-spacing: 0.05em !important;
+  display: inline-flex !important;
+  align-items: center !important;
 }
 
 .tag-indigo { background: rgba(36, 59, 107, 0.92); color: #FFFFFF !important; }
@@ -8380,22 +8392,45 @@ html.dark .archive-interact-slide:hover .archive-tile-name {
 }
 
 .storyline-card {
+  position: relative;
   background: var(--bg-card);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border-subtle);
+  border: 2px solid var(--border-subtle);
   padding: 0;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.5s;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.4s ease;
+}
+
+/* Glowing top highlight bar */
+.storyline-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-terracotta), var(--color-turmeric));
+  opacity: 0;
+  transform: scaleX(0.7);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
 }
 
 .storyline-card:hover,
 .storyline-card.active {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
   border-color: var(--color-terracotta);
-  box-shadow: var(--shadow-md), 0 16px 32px rgba(200, 90, 62, 0.12);
+  box-shadow: 0 16px 36px -6px rgba(200, 90, 62, 0.28), 0 0 0 3px rgba(200, 90, 62, 0.18);
+}
+
+.storyline-card:hover::before,
+.storyline-card.active::before {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .storyline-stage-badge {
@@ -8426,6 +8461,7 @@ html.dark .archive-interact-slide:hover .archive-tile-name {
   background: var(--color-terracotta);
   color: #FFFFFF;
   border-color: var(--color-terracotta);
+  box-shadow: 0 4px 14px rgba(200, 90, 62, 0.45);
   transform: scale(1.1);
 }
 
@@ -8436,6 +8472,13 @@ html.dark .archive-interact-slide:hover .archive-tile-name {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-terracotta);
+  transition: letter-spacing 0.3s ease, text-shadow 0.3s ease;
+}
+
+.storyline-card:hover .storyline-action-word,
+.storyline-card.active .storyline-action-word {
+  letter-spacing: 0.14em;
+  text-shadow: 0 2px 8px rgba(200, 90, 62, 0.25);
 }
 
 .storyline-img-box {
@@ -8453,8 +8496,9 @@ html.dark .archive-interact-slide:hover .archive-tile-name {
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.storyline-card:hover .storyline-img {
-  transform: scale(1.08);
+.storyline-card:hover .storyline-img,
+.storyline-card.active .storyline-img {
+  transform: scale(1.06);
 }
 
 .storyline-content {
@@ -8470,12 +8514,49 @@ html.dark .archive-interact-slide:hover .archive-tile-name {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.storyline-card:hover .storyline-title,
+.storyline-card.active .storyline-title {
+  color: var(--color-terracotta);
 }
 
 .storyline-desc {
   font-size: 0.88rem;
   color: var(--text-secondary);
   line-height: 1.6;
+}
+
+/* Dark mode storyline card highlights */
+html.dark .storyline-card:hover,
+html.dark .storyline-card.active {
+  border-color: var(--color-turmeric);
+  box-shadow: 0 16px 36px -6px rgba(233, 168, 32, 0.35), 0 0 0 3px rgba(233, 168, 32, 0.22);
+}
+
+html.dark .storyline-card:hover::before,
+html.dark .storyline-card.active::before {
+  background: linear-gradient(90deg, var(--color-turmeric), var(--color-terracotta));
+}
+
+html.dark .storyline-card:hover .storyline-phase-pill,
+html.dark .storyline-card.active .storyline-phase-pill {
+  background: var(--color-turmeric);
+  border-color: var(--color-turmeric);
+  color: #1A1412;
+  box-shadow: 0 4px 14px rgba(233, 168, 32, 0.45);
+}
+
+html.dark .storyline-card:hover .storyline-action-word,
+html.dark .storyline-card.active .storyline-action-word {
+  color: var(--color-turmeric);
+  text-shadow: 0 2px 8px rgba(233, 168, 32, 0.35);
+}
+
+html.dark .storyline-card:hover .storyline-title,
+html.dark .storyline-card.active .storyline-title {
+  color: var(--color-turmeric);
 }
 
 /* ==========================================================================
@@ -8609,6 +8690,7 @@ html.dark .macro-zoom-level {
   font-weight: 600;
   color: var(--text-secondary);
   border: 1px solid var(--border-subtle);
+  white-space: nowrap;
 }
 
 /* ==========================================================================
