@@ -10116,6 +10116,10 @@ html.dark footer span.cursor-pointer:hover {
   padding: 3.5rem 0;
 }
 
+.standard-page-hero.justify-center {
+  justify-content: center;
+}
+
 @media (min-width: 768px) {
   .standard-page-hero {
     height: 520px !important;
