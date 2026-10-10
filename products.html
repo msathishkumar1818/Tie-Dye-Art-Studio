@@ -32,9 +32,8 @@
 
   <!-- Favicon / Brand Title Icon -->
   <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23243B6B' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01'/%3E%3C/svg%3E">
-
-  <!-- Custom Master Stylesheet -->
+    href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23243B6B%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M7%204.5h6.25A2.75%202.75%200%200116%207.25V19H9.25A2.25%202.25%200%20017%2016.75zM16%208h1a2.5%202.5%200%20010%205h-1M10%208.5v6m2.5-4.5L14%208.5m-1.5%205%201.5-1.5%22%2F%3E%3C%2Fsvg%3E"
+    <!-- Custom Master Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -62,7 +61,7 @@
           <svg class="logo-icon-svg text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round"
-              d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+              d="M7 4.5h6.25A2.75 2.75 0 0116 7.25V19H9.25A2.25 2.25 0 017 16.75zM16 8h1a2.5 2.5 0 010 5h-1M10 8.5v6m2.5-4.5L14 8.5m-1.5 5 1.5-1.5" />
           </svg>
         </div>
         <div class="brand-text-wrap">
@@ -151,7 +150,7 @@
             <svg class="logo-icon-svg text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round"
-                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                d="M7 4.5h6.25A2.75 2.75 0 0116 7.25V19H9.25A2.25 2.25 0 017 16.75zM16 8h1a2.5 2.5 0 010 5h-1M10 8.5v6m2.5-4.5L14 8.5m-1.5 5 1.5-1.5" />
             </svg>
           </div>
           <div class="brand-text-wrap">
@@ -160,8 +159,10 @@
           </div>
         </a>
         <button class="drawer-close-btn" aria-label="Close mobile menu">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-            <line x1="4" y1="4" x2="14" y2="14"/><line x1="14" y1="4" x2="4" y2="14"/>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round">
+            <line x1="4" y1="4" x2="14" y2="14" />
+            <line x1="14" y1="4" x2="4" y2="14" />
           </svg>
         </button>
       </div>
@@ -306,8 +307,7 @@
     <!-- SECTION 02 — SHOP BY CATEGORY & CURATED FILTERS -->
     <section id="category-filter"
       class="py-4 md:py-5 bg-primary border-b border-subtle sticky top-20 z-30 backdrop-blur-md bg-opacity-95 shadow-xs">
-      <div
-        class="max-w-[1240px] mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
+      <div class="max-w-[1240px] mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
         <!-- Filter Tabs in a clean single line with smooth horizontal scroll if needed -->
         <div
           class="w-full md:w-auto flex items-center justify-start md:justify-start gap-2 sm:gap-2.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none whitespace-nowrap">
@@ -343,18 +343,19 @@
             dips.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 stagger-parent items-stretch">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 xl:gap-8 stagger-parent items-stretch">
           <div
             class="product-item-card art-card tilt-card-3d group stagger-item scroll-reveal-up bg-card flex flex-col items-center text-center h-full"
             data-category="apparel">
             <div class="relative h-80 overflow-hidden w-full">
-              <img src="assets/images/products/apparel-kimono-cerulean.jpg" alt="Cerulean Indigo Silk Haori Kimono"
+              <img src="assets/images/products/p65.jpg" alt="Cerulean Indigo Silk Haori Kimono"
                 class="img-cover group-hover:scale-105">
-              <span class="absolute top-3 left-3 card-tag tag-indigo">Batik Canting</span>
+
             </div>
             <div class="p-6 flex flex-col items-center text-center flex-1 w-full justify-between">
               <div>
-                <div class="text-xs font-bold uppercase text-terracotta mb-1 tracking-wider text-center">Pure Mulberry
+                <div class="text-xs font-bold uppercase text-secondary mb-1 tracking-wider text-center">Pure Mulberry
                   Silk</div>
                 <h3
                   class="font-serif text-xl font-bold text-primary mb-2 text-center min-h-[3.25rem] flex items-center justify-center">
@@ -364,8 +365,9 @@
                   Hand-drawn wax-resist waves, dipped 14 times in
                   Sukumo indigo.</p>
               </div>
-              <div class="flex items-center justify-center gap-4 pt-4 border-t border-subtle w-full mt-auto">
-                <span class="font-display font-extrabold text-xl text-primary">$340</span>
+              <div
+                class="flex items-center justify-between gap-2.5 pt-3.5 border-t border-subtle w-full mt-auto card-action-footer">
+                <span class="font-display font-extrabold text-xl text-primary shrink-0">$340</span>
                 <a href="contact.html" class="btn btn-sm btn-outline">Enquire / Order</a>
               </div>
             </div>
@@ -377,11 +379,11 @@
             <div class="relative h-80 overflow-hidden w-full">
               <img src="assets/images/products/apparel-linen-shirt.jpg" alt="Terracotta &amp; Turmeric Linen Overshirt"
                 class="img-cover group-hover:scale-105">
-              <span class="absolute top-3 left-3 card-tag tag-turmeric">Botanical Dip</span>
+
             </div>
             <div class="p-6 flex flex-col items-center text-center flex-1 w-full justify-between">
               <div>
-                <div class="text-xs font-bold uppercase text-terracotta mb-1 tracking-wider text-center">Belgian Flax
+                <div class="text-xs font-bold uppercase text-secondary mb-1 tracking-wider text-center">Belgian Flax
                   Linen</div>
                 <h3
                   class="font-serif text-xl font-bold text-primary mb-2 text-center min-h-[3.25rem] flex items-center justify-center">
@@ -391,8 +393,9 @@
                   Tailored linen shirt dyed with autumn marigold and
                   madder root.</p>
               </div>
-              <div class="flex items-center justify-center gap-4 pt-4 border-t border-subtle w-full mt-auto">
-                <span class="font-display font-extrabold text-xl text-primary">$210</span>
+              <div
+                class="flex items-center justify-between gap-2.5 pt-3.5 border-t border-subtle w-full mt-auto card-action-footer">
+                <span class="font-display font-extrabold text-xl text-primary shrink-0">$210</span>
                 <a href="contact.html" class="btn btn-sm btn-outline">Enquire / Order</a>
               </div>
             </div>
@@ -402,13 +405,13 @@
             class="product-item-card art-card tilt-card-3d group stagger-item scroll-reveal-up bg-card flex flex-col items-center text-center h-full"
             data-category="apparel">
             <div class="relative h-80 overflow-hidden w-full">
-              <img src="assets/images/products/apparel-shibori-scarf.jpg"
-                alt="Arashi Pole-Wrapped Pure Mulberry Silk Scarf" class="img-cover group-hover:scale-105">
-              <span class="absolute top-3 left-3 card-tag tag-indigo">Arashi Shibori</span>
+              <img src="assets/images/products/p66.jpg" alt="Arashi Pole-Wrapped Pure Mulberry Silk Scarf"
+                class="img-cover group-hover:scale-105">
+
             </div>
             <div class="p-6 flex flex-col items-center text-center flex-1 w-full justify-between">
               <div>
-                <div class="text-xs font-bold uppercase text-terracotta mb-1 tracking-wider text-center">Silk Habotai
+                <div class="text-xs font-bold uppercase text-secondary mb-1 tracking-wider text-center">Silk Habotai
                 </div>
                 <h3
                   class="font-serif text-xl font-bold text-primary mb-2 text-center min-h-[3.25rem] flex items-center justify-center">
@@ -418,8 +421,9 @@
                   Pleated diagonal wave pattern on featherlight
                   mulberry silk.</p>
               </div>
-              <div class="flex items-center justify-center gap-4 pt-4 border-t border-subtle w-full mt-auto">
-                <span class="font-display font-extrabold text-xl text-primary">$135</span>
+              <div
+                class="flex items-center justify-between gap-2.5 pt-3.5 border-t border-subtle w-full mt-auto card-action-footer">
+                <span class="font-display font-extrabold text-xl text-primary shrink-0">$135</span>
                 <a href="contact.html" class="btn btn-sm btn-outline">Enquire / Order</a>
               </div>
             </div>
@@ -429,13 +433,13 @@
             class="product-item-card art-card tilt-card-3d group stagger-item scroll-reveal-up bg-card flex flex-col items-center text-center h-full"
             data-category="apparel">
             <div class="relative h-80 overflow-hidden w-full">
-              <img src="assets/images/products/apparel-madder-dress.jpg"
-                alt="Madder Root &amp; Coral Gradient Midi Dress" class="img-cover group-hover:scale-105">
-              <span class="absolute top-3 left-3 card-tag tag-terracotta">Ombre Immersion</span>
+              <img src="assets/images/products/p67.jpg" alt="Madder Root &amp; Coral Gradient Midi Dress"
+                class="img-cover group-hover:scale-105">
+
             </div>
             <div class="p-6 flex flex-col items-center text-center flex-1 w-full justify-between">
               <div>
-                <div class="text-xs font-bold uppercase text-terracotta mb-1 tracking-wider text-center">Organic Cotton
+                <div class="text-xs font-bold uppercase text-secondary mb-1 tracking-wider text-center">Organic Cotton
                   Voile</div>
                 <h3
                   class="font-serif text-xl font-bold text-primary mb-2 text-center min-h-[3.25rem] flex items-center justify-center">
@@ -445,8 +449,9 @@
                   Vertical gradient immersion transition from soft
                   peach to crimson.</p>
               </div>
-              <div class="flex items-center justify-center gap-4 pt-4 border-t border-subtle w-full mt-auto">
-                <span class="font-display font-extrabold text-xl text-primary">$285</span>
+              <div
+                class="flex items-center justify-between gap-2.5 pt-3.5 border-t border-subtle w-full mt-auto card-action-footer">
+                <span class="font-display font-extrabold text-xl text-primary shrink-0">$285</span>
                 <a href="contact.html" class="btn btn-sm btn-outline">Enquire / Order</a>
               </div>
             </div>
@@ -474,13 +479,13 @@
             <div class="relative h-64 overflow-hidden w-full">
               <img src="assets/images/products/home-cushion-set.jpg" alt="Set of 3 Itajime Shibori Linen Cushions"
                 class="img-cover group-hover:scale-105">
-              <span class="absolute top-3 left-3 card-tag tag-teal">Itajime Wood Clamp</span>
+
             </div>
             <div class="p-6 flex flex-col items-center text-center flex-1 w-full justify-between">
               <div>
                 <div class="text-xs font-bold uppercase text-teal mb-1 tracking-wider text-center">Set of 3 (45x45cm)
                 </div>
-                <h3 class="font-serif text-xl font-bold text-primary mb-2 text-center">Itajime </h3>
+                <h3 class="font-serif text-xl font-bold text-primary mb-2 text-center">Itajime Cushion Trio</h3>
                 <p class="text-xs text-secondary mb-4 text-center leading-relaxed">Accordion linen clamped and dipped in
                   iron & indigo.</p>
               </div>
@@ -497,13 +502,13 @@
             <div class="relative h-64 overflow-hidden w-full">
               <img src="assets/images/products/home-table-runner.jpg" alt="Turmeric & Iron Botanical Table Runner"
                 class="img-cover group-hover:scale-105">
-              <span class="absolute top-3 left-3 card-tag tag-turmeric">Botanical Print</span>
+
             </div>
             <div class="p-6 flex flex-col items-center text-center flex-1 w-full justify-between">
               <div>
                 <div class="text-xs font-bold uppercase text-turmeric-dark mb-1 tracking-wider text-center">Heavy Woven
                   Flax </div>
-                <h3 class="font-serif text-xl font-bold text-primary mb-2 text-center">Solar Dining </h3>
+                <h3 class="font-serif text-xl font-bold text-primary mb-2 text-center">Solar Dining Runner</h3>
                 <p class="text-xs text-secondary mb-4 text-center leading-relaxed">Turmeric linen foundation with iron
                   leaf silhouettes.</p>
               </div>
@@ -520,14 +525,14 @@
             <div class="relative h-64 overflow-hidden w-full">
               <img src="assets/images/products/home-waffle-throw.jpg" alt="Deep Forest Indigo Waffle Blanket Throw"
                 class="img-cover group-hover:scale-105">
-              <span class="absolute top-3 left-3 card-tag tag-indigo">Organic Waffle</span>
+
             </div>
             <div class="p-6 flex flex-col items-center text-center flex-1 w-full justify-between">
               <div>
                 <div
                   class="text-xs font-bold uppercase text-terracotta dark:text-turmeric-400 mb-1 tracking-wider text-center">
                   GOTS Cottons weave </div>
-                <h3 class="font-serif text-xl font-bold text-primary mb-2 text-center">Deep Indigo </h3>
+                <h3 class="font-serif text-xl font-bold text-primary mb-2 text-center">Deep Indigo Throw</h3>
                 <p class="text-xs text-secondary mb-4 text-center leading-relaxed">Honeycomb weave dyed through repeated
                   indigo aerations.</p>
               </div>
@@ -560,7 +565,7 @@
             <div class="relative h-80 overflow-hidden w-full">
               <img src="assets/images/products/p18.jpg" alt="Celestial Indigo Framed Silk Batik Wall Piece"
                 class="img-cover group-hover:scale-105">
-              <span class="absolute top-3 left-3 card-tag tag-indigo text-white">Limited 1/5 Edition</span>
+
             </div>
             <div class="p-6 flex flex-col items-center text-center flex-1 w-full justify-between">
               <div>
@@ -583,7 +588,6 @@
             <div class="relative h-80 overflow-hidden w-full">
               <img src="assets/images/products/p19.jpg" alt="Terracotta Strata Large Format Hanging Tapestry"
                 class="img-cover group-hover:scale-105">
-              <span class="absolute top-3 left-3 card-tag tag-terracotta text-white">Hand-Loomed Flax</span>
             </div>
             <div class="p-6 flex flex-col items-center text-center flex-1 w-full justify-between">
               <div>
@@ -606,7 +610,6 @@
             <div class="relative h-80 overflow-hidden w-full">
               <img src="assets/images/products/p20.jpg" alt="Botanical Bloom Wax-Resist Silk Art Panel"
                 class="img-cover group-hover:scale-105">
-              <span class="absolute top-3 left-3 card-tag tag-turmeric text-white">Gold Leaf & Indigo</span>
             </div>
             <div class="p-6 flex flex-col items-center text-center flex-1 w-full justify-between">
               <div>
@@ -762,7 +765,7 @@
       <div class="bg-anim-radial-sweep" aria-hidden="true">
         <div class="bg-anim-sweep-flare"></div>
       </div>
-      <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <div class="site-cta-panel max-w-4xl mx-auto px-6 text-center relative z-10">
         <span class="section-kicker justify-center">Looking for Something Personal?</span>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-primary mb-6">
           Custom Commissions
@@ -772,7 +775,7 @@
         </p>
         <div class="flex flex-wrap justify-center gap-4">
           <a href="custom-orders.html" class="btn btn-terracotta btn-lg">Explore Commissions</a>
-          <a href="contact.html" class="btn btn-outline btn-lg">Inquire via Concierge</a>
+          <a href="contact.html" class="btn btn-outline-white btn-lg">Inquire via Concierge</a>
         </div>
       </div>
     </section>
@@ -783,20 +786,22 @@
     <div class="bg-anim-footer-subtle" aria-hidden="true"></div>
     <div class="footer-top">
       <div>
-        <div class="flex items-center gap-3 mb-2">
-          <div class="logo-icon-wrap">
-            <svg class="logo-icon-svg text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01">
-              </path>
-            </svg>
+        <a href="index.html" class="footer-brand-link" aria-label="Aura Atelier home">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="logo-icon-wrap">
+              <svg class="logo-icon-svg text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M7 4.5h6.25A2.75 2.75 0 0116 7.25V19H9.25A2.25 2.25 0 017 16.75zM16 8h1a2.5 2.5 0 010 5h-1M10 8.5v6m2.5-4.5L14 8.5m-1.5 5 1.5-1.5">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <div class="brand-text">AURA ATELIER</div>
+              <div class="footer-brand-subtitle">BATIK &amp; TEXTILE STUDIO</div>
+            </div>
           </div>
-          <div>
-            <div class="brand-text">AURA ATELIER</div>
-            <div class="footer-brand-subtitle">BATIK &amp; TEXTILE STUDIO</div>
-          </div>
-        </div>
+        </a>
         <p class="footer-brand-desc">
           Handcrafted Batik, Japanese Shibori, and natural botanical dye studio.
         </p>

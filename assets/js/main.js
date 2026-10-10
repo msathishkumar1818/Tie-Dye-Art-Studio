@@ -723,11 +723,11 @@ function initModals() {
 
   modalTriggers.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.preventDefault();
       const modalId = btn.getAttribute('data-open-modal');
       const targetModal = document.getElementById(modalId);
       
       if (targetModal) {
+        e.preventDefault();
         const courseName = btn.getAttribute('data-course-name');
         if (courseName) {
           const select = targetModal.querySelector('#modal-workshop-select');
@@ -1687,4 +1687,3 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
-
